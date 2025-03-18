@@ -16,12 +16,12 @@ RUN apt-get update && apt-get install -y \
 RUN useradd -m vintagestory
 
 # 复制本地的压缩包到镜像
-COPY vs_server_linux-x64_1.20.4.tar.gz .
+COPY vs_server_linux-x64_1.20.*.tar.gz .
 
 # 解压压缩包
 RUN tar xzf vs_server_linux-x64_*.*.*.tar.gz && \
 	chmod +x server.sh && \
-    rm vs_server_linux-x64_1.20.4.tar.gz && \
+    rm vs_server_linux-x64_1.20.*.tar.gz && \
     mkdir -p /var/vintagestory/data/Logs
 
 #启动服务器
@@ -33,3 +33,5 @@ RUN chown -R vintagestory:vintagestory . && \
 
 # 暴露端口
 EXPOSE 42420
+
+CMD ["/bin/bash"]

@@ -86,12 +86,15 @@ Follow the steps below to quickly set up a Vintage Story dedicated server on Lin
    使用以下命令运行容器，并将主机上的 `/var/vintagestory/data` 挂载到容器中的 `/var/vintagestory/data`。同时，使用 `--restart=always` 参数确保容器在意外停止或系统重启后自动启动：  
    Run the container and mount the `/var/vintagestory/data` folder from the host to the container. Additionally, use the `--restart=always` parameter to ensure the container auto-starts after unexpected stops or system reboots:  
    ```bash
-   docker run -d \
+   docker run -it \
      --name vintage-story-server \
      -p 42420:42420 \
      -v /var/vintagestory/data:/var/vintagestory/data \
      --restart=always \
      vintage-story-server
+   ```
+   ```bash
+   ./server.sh start
    ```
 
 6. **使用 `start.sh` 脚本**  
